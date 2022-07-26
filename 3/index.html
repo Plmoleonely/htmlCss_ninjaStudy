@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML Forms</title>
+    </head>
+
+    <body>
+
+        <h1>HTML FORMS</h1>
+
+        <form>
+            <label for="username">enter user name:</label>
+            <!-- id可以用在任何tag上，用來表示那個tag的名稱，可以link，像這裡是label link input。 -->
+            <!-- name是要用在後端的，可以習慣加上。 -->
+            <!-- placeholder是提醒使用者該空格填入的東西是甚麼。 -->
+            <!-- required是設定該值必須要填入否則無法submit。 -->
+            <input type="text" id="username" name="username" placeholder="username" required>
+            <br><br>
+            <label for="email">enter email:</label>
+            <input type="email"  id="email" name="email" placeholder="ur email" required>
+            <br><br>
+            <label for="password">password:</label>
+            <input type="password" id="password" name="password" placeholder="enter password" required>
+
+            <p>select ur age:</p>
+            <!-- 如果設定同樣的name，radio buttom 就只能選一個。 -->
+            <!-- value是當選擇該項時，會傳送value值給server端。 -->
+            <input type="radio" name="age" value="0-25" id="option-1">
+            <label for="option-1">0-25</label>
+            <input type="radio" name="age" value="26-50" id="option-2">
+            <label for="option-2">26-50</label>
+            <input type="radio" name="age" value="51+" id="option-3">
+            <label for="option-3">51+</label>
+
+            <br><br>
+            <!-- 如果選擇一個option，他會回傳value給server端。 -->
+            <label for="question">Security question:</label>
+            <select name="question" id="question">
+                <option value="q1">what color are ur favorite pair of socks?</option>
+                <option value="q2">if u could be a vegtable, what it be?</option>
+                <option value="q3">what is ur best ever security question?</option>
+            </select>
+
+            <br><br>
+
+            <label for="answer">security question's answer:</label>
+            <input type="text" id="answer" name="answer">
+
+            <br><br>
+
+            <label for="bio">your bio:</label><br>
+            <textarea name="bio" id="bio" cols="30" rows="10" placeholder="about u..."></textarea>
+
+            <br><br>
+            <!-- submit鍵可以將form內的值傳回後端，傳入的方式是寫在form的attribute裡。 -->
+            <input type="submit" value="submit the form">
+
+        </form>
+
+    </body>
+</html>

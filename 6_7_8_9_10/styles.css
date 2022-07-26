@@ -1,0 +1,225 @@
+/* html本來就有預設CSS，這個步驟是要resetting成自己想要的格式。 */
+body, ul, li, h1, h2, a{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 使用position fixed可以在你滾動頁面時，保持在畫面的某個位置，但要記得加上width，否則會被壓縮。 */
+/* z-index是可以調整上下層關係，數字越大越在上層。 */
+header{
+    background-color: red;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    /* 貼其頁面設0。 */
+    top: 0;
+    left: 0;
+}
+/* padding的第一個值是上下大小，第二個是左右大小。 */
+/* 預設是block level element所以會占滿整個區塊，可以用in-line來調整成只有h1這個區塊。 */
+/* border-radius可以把border設成圓角。 */
+header h1{
+    color: white;
+    border: 8px solid white;
+    padding: 6px 12px;
+    display: inline-block;
+    border-radius: 36px;
+}
+/* 想把字移動到圖片上要先確定上一層的parent不是static，要先改成relative。 */
+.banner{
+    position: relative;
+}
+.banner img{
+    max-width: 100%;
+}
+/* 用%數的好處是在放大縮小畫面時不會移位。 */
+/* 這裡的left的意思是距離左邊多少，top則是距離上面多少。 */
+.banner .welcome{
+    background-color: orange;
+    color: white;
+    padding: 30px;
+    position: absolute;
+    left: 0;
+    top: 30%;
+}
+.banner h2{
+    font-size: 74px;
+}
+/* em的意思是根據parent的大小乘以幾倍。 */
+.banner h2 span{
+    font-size: 1.3em;
+}
+/* sticky=static+fixed。 */
+/* 藉由top來調整位置，不然會被擋住。 */
+nav{
+    background-color: lightyellow;
+    padding: 20px;
+    position: sticky;
+    top: 104px;
+}
+/* nowrap的目的在於等等設置各25%的寬度不會被判定自動換行。 */
+/* magin寬度auto是用在當大於1200時可以自動補正到各兩邊，也可以達到置中的效果。 */
+nav ul{
+    white-space: nowrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+nav li{
+    width: 25%;
+    display: inline-block;
+    font-size: 24px;
+}
+nav li a{
+    text-decoration: none;
+    color: brown;
+}
+nav li a.join{
+    color: red;
+}
+/* 設置100%確保不會超出頁面 */
+/* 假設某個瀏覽是2000px但因為設置1200px加上margin的auto，會使整個看起來置中，但如果小於1200px因為有設定
+100%的關係，所以還是看得到。(這很玄，沒有很懂。) */
+/* 設置padding在畫面壓縮時兩側會有40px的空白部分，但這會間接使部分畫面壓縮時跑出畫面外，所以加上box-sizzing
+可以解決這個問題。 */
+main{
+    max-width: 100%;
+    width: 1200px;
+    margin: 80px auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+article h2{
+    color: orangered;
+    font-size: 48px;
+}
+/* 上下字的間距。 */
+article p{
+    line-height: 2em;
+    color: brown;
+}
+.images{
+    text-align: center;
+    margin: 80px 0;
+    white-space: nowrap;
+}
+/* 透過40%&100%還有nowrap最後把兩個圖片並排還留間隙。 */
+.images li{
+    display: inline-block;
+    width: 40%;
+    margin: 20px 5%;
+}
+.images li img{
+    width: 100%;
+}
+section.join{
+    background: lightyellow;
+    text-align: center;
+    padding: 60px 20px;
+    color: darkgrey;
+}
+.join h2{
+    font-size: 36px;
+}
+form input{
+    margin: 20px; 
+    padding: 10px 20px;
+    font-size: 24px;
+    border-radius: 28px;
+    border: 4px solid white;
+}
+footer{
+    background: red;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* pseudo classes是偽類別，讓使用者的鼠標停在某個東西上時能有變化，:來使用。 */
+nav li a:hover{
+    text-decoration: underline;
+}
+.images li:hover{
+    position: relative;
+    top: -4px;
+}
+form input:focus{
+    border: 4px dashed brown;
+    outline: none;
+}
+/* valid就是如果輸入的值與該填空格符合將會套用此效果。 */
+form input:valid{
+    border: 4px solid green;
+}
+/* 只有第一個child會受影響。 */
+nav li:first-child{
+    border: 3px solid red;
+}
+/* ::是pseudo element，可以指定某個tag裡的某個字或第一行等等的來做改變。 */
+article p::first-line{
+    font-size: 1.2em;
+}
+section.join p::first-letter{
+    font-size: 1.5em;
+}
+p::selection{
+    background-color: red;
+    color: white;
+}
+p::after{
+    content: '...';
+}
+
+/* responsive styles是在縮小畫面時可以讓一些圖片也可以一起改變。 */
+/* max得意思是1400px以下的都是用，超過就不適用，min的話就是相反。 */
+@media screen and (max-width: 1400px){
+    .banner .welcome h2{
+        font-size: 60px;
+    }
+    nav li{
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 960px){
+    .banner .welcome h2{
+        font-size: 40px;
+    }
+}
+@media screen and (max-width: 700px){
+    .banner .welcome{
+        position: relative;
+        text-align: center;
+        padding: 10px;
+    }
+    /* 透過這種方式來取消br */
+    .banner .welcome br{
+        display: none;
+    }
+    .banner .welcome h2{
+        font-size: 25px;
+    }
+    .banner .welcome span{
+        font-size: 1em;
+    }
+    .images li{
+        width: 100%;
+        margin: 20px auto;
+        display: block;
+    }
+}
+@media screen and (max-width: 560px){
+    nav li{
+        font-size: 20px;
+        display: block;
+        width: 100%;
+        margin: 12px 0;
+    }
+    header{
+        position: relative;
+    }
+    nav{
+        top: 0;
+    }
+}

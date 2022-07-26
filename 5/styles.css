@@ -1,0 +1,74 @@
+/* .開頭來代表class。 */
+.error{
+    color: brown;
+}
+/* 在.前面可以加上指定的tag種類。 */
+p.error{
+    color: blue;
+}
+p.success{
+    color: rgb(124, 244, 124);
+}
+/* 同時指定兩個class */
+p.success.feedback{
+    border: 1px dashed;
+}
+/* 用#開頭來使用id分類的tag */
+/* 在#前一樣可以加上tag的種類。 */
+#content{
+    background-color: blueviolet;
+    padding: 20px;
+}
+/* 指定parent中的children，parent(空格)child */
+div p{
+    background-color: purple;
+}
+/* 指定parent中的class */
+div .error{
+    color: red;
+}
+/* 使用attribute來當作selectors的方式 */
+/* 每個a tag中有href的都會被選擇到。 */
+a[href]{
+    background-color: darkgreen;
+}
+/* 指定選擇attributr的值為多少時。 */
+a[href="https://www.youtube.com/c/PerplexrS"]{
+    background-color: darkblue;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+/* 等號前加上*字號代表包含(include)，上下兩個方法等價。 */
+a[href*="PerplexrS"]{
+    background-color: darkblue;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+/* 號前加上$字號代表是以甚麼字結尾的(ends of the value is"") */
+a[href$="PerplexrS"]{
+
+}
+/* CSS的cascade(inheritence)之於child繼承parent的格式，但並不會完整繼承，字的格式顏色會，
+但像是border並不會，所以要注意。 */
+div{
+    color: lightblue;
+    border: 1px solid grey;
+    margin: 40px;
+    font-weight: bold;
+}
+/* 如果要繼承可以用這樣的方式。 */
+p{
+    border: inherit;
+    margin: inherit;
+    /* child可以直接override inheritence。 */
+    color: crimson;
+}
+/* CSS是由上往下，誰在最下面的設定就是誰，但是有例外，像是在 div p如果在上面，這個特性是specify專一性。 */
+p{
+    /* 再次override */
+    color: orange;
+}

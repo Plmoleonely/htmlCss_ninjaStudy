@@ -1,0 +1,14 @@
+span{
+    /* 有些tag本身就有預設的CSS style需要打開網頁看一下，很多都有margin，margin是整個區塊(上下左右)，
+    但是inline只有包含左右的位置。 */
+    /* inline-block可以避免margin重疊，會比較好看。 */
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+}
+div{
+    /* display: inline; */
+    border: 2px solid red;
+    margin: 20px;
+    padding: 20px;
+}
